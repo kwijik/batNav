@@ -29,6 +29,8 @@ public class Navire {
 	// boolean - estVertical, int - longueur -> ?
 	
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
+		this.estVertical = estVertical;
+		this.longueur = longueur;
 		this.debut = debut;
 		partiesTouchees = new Coordonnee[longueur];
 		nbTouchees = 0;
@@ -41,9 +43,10 @@ public class Navire {
 	
 	public String toString(){
 		if (this.estVertical){
-			return "Navire(" + this.
+		    return "Navire(" + this.debut + "," + this.longueur + ",Vertical)";
+		} else{
+			return "Navire(" + this.debut + "," + this.longueur + "Horizontal)";
 		}
-	//	return "Navire(" + this.
 	}
 
 	public Coordonnee getDebut() {
@@ -214,9 +217,11 @@ public class Navire {
 	 }
 	 
 	public static void main(String[] args) {
-		Navire n1 = new Navire(new Coordonnee(6, 7), 2, false);
+		Navire n1 = new Navire(new Coordonnee(6, 7), 2, true);
 		Navire n2 = new Navire(new Coordonnee(7, 7), 3, false);
 		System.out.println(n1.touche(n2));
+		System.out.println(n1);
+		System.out.println(n2);
 	}
 }
 // 18-30 - 20-30
