@@ -9,6 +9,9 @@ public class Navire {
 	private Coordonnee[] partiesTouchees;
 	private int nbTouchees;
 	
+	// nouveaux variables
+	private boolean estVertical;
+	private int longueur;
 	/* Méthodes de classe
 	 * 
 	 * String toString()
@@ -23,6 +26,8 @@ public class Navire {
 	 * c boolean estCoule() 
 	 */
 
+	// boolean - estVertical, int - longueur -> ?
+	
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
 		this.debut = debut;
 		partiesTouchees = new Coordonnee[longueur];
@@ -32,6 +37,13 @@ public class Navire {
 		} else {
 			fin = new Coordonnee(debut.getLigne(), debut.getColonne() + longueur);
 		}
+	}
+	
+	public String toString(){
+		if (this.estVertical){
+			return "Navire(" + this.
+		}
+	//	return "Navire(" + this.
 	}
 
 	public Coordonnee getDebut() {

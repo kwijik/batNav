@@ -23,6 +23,7 @@ public class GrilleNavale {
 	 *  boolean perdu()
 	 */
 	
+	//taillesNavires {4,2,3} -> три корабля разного размера. Цифра - размер корабля
 	public GrilleNavale(int taille, int[] taillesNavires) {
 		//this(taille);
 		
@@ -31,8 +32,8 @@ public class GrilleNavale {
 	public GrilleNavale(int taille,  int nbNavires) {
 	    // возвращает пустое поле размера taille и он может вместить nbNavires
 		this.tailleGrille = taille;
-		navires = new Navire[0];
-		this.nbNavires = nbNavires;
+		navires = new Navire[10];
+		this.nbNavires = 0;
 		tirsRecus = new Coordonnee[taille * taille];
 		nbTirsRecus = 0;
 	}
@@ -138,7 +139,7 @@ public class GrilleNavale {
 	}
 	*/
 	 public static void main(String[] args) {
-		GrilleNavale gn = new GrilleNavale(10);
+		GrilleNavale gn = new GrilleNavale(10, 4);
 		System.out.println(gn);
 	}
 }
