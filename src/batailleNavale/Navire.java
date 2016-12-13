@@ -8,6 +8,20 @@ public class Navire {
 	private Coordonnee fin;
 	private Coordonnee[] partiesTouchees;
 	private int nbTouchees;
+	
+	/* Méthodes de classe
+	 * 
+	 * String toString()
+	 * Coordonnee getDebut()
+	 * Coordonnee getFin()
+	 * boolean contientt(Coordonnee c) 
+	 * boolean touche(Navire n)
+	 * boolean chevauchee(Navire n)
+	 * boolean recoitTirr(Coordonnee c)
+	 * boolean estTouchee(Coordonnee c)
+	 * boolean estTouche() 
+	 * c boolean estCoule() 
+	 */
 
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
 		this.debut = debut;
@@ -87,7 +101,8 @@ public class Navire {
 		}
 		return false;
 	}
-
+// переписать проверить длину обеих кораблей
+ 
 	public boolean chevauche(Navire n) {
 		// true если this и n занимают как минимум одну общую координату
 		ArrayList<Coordonnee> navire1, navire2;

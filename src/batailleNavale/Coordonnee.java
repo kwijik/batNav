@@ -4,6 +4,16 @@ public class Coordonnee {
 
 	private int ligne;
 	private int colonne;
+	
+	/* Méthodes de classe
+	 * 
+	 * String toString()
+	 * int getLigne() 
+	 * int getColonne()
+	 * boolean equals(Object obj)
+	 * boolean voisine(Coordonnee c)
+	 * int compareTo(Coordonnee c)
+	 */
 
 	public Coordonnee(int ligne, int colonne) {
 		this.ligne = ligne;

@@ -8,15 +8,36 @@ public class GrilleNavale {
 	private Coordonnee[] tirsRecus; // координаты клеток куда стреляли
 	private int nbTirsRecus; // количество выстрелов
 	
+	/* Méthodes de classe
+	 * 
+	 * String toString() 
+	 * boolean ajouteNavire(Navire n)
+	 * void placementAuto(int[] taillesNavires) 
+	 * boolean estDansGrille(Coordonnee c) 
+	 * boolean estDansTirsRecus(Coordonnee c)
+	 * boolean ajouteDansTirsRecus(Coordonnee c)
+	 * boolean recoitTir(Coordonnee c) 
+	 * boolean estTouche(Coordonnee c)
+	 *  boolean estALEau(Coordonnee c)
+	 *  boolean estCoule(Coordonnee c)
+	 *  boolean perdu()
+	 */
+	
 	public GrilleNavale(int taille, int[] taillesNavires) {
-		this(taille);
+		//this(taille);
 		
 	}
 	
 	public GrilleNavale(int taille,  int nbNavires) {
 	    // возвращает пустое поле размера taille и он может вместить nbNavires
+		this.tailleGrille = taille;
+		navires = new Navire[0];
+		this.nbNavires = nbNavires;
+		tirsRecus = new Coordonnee[taille * taille];
+		nbTirsRecus = 0;
 	}
 	
+	/*
 	public GrilleNavale(int taille) {
 		this.tailleGrille = taille;
 		navires = new Navire[0];
@@ -25,7 +46,7 @@ public class GrilleNavale {
 		nbTirsRecus = 0;
 	}
 	
-	
+	*/
 	
 	 
 	 public String toString(){
