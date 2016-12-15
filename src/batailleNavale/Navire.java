@@ -52,9 +52,20 @@ public class Navire {
 	public Coordonnee getDebut() {
 		return debut;
 	}
+	public boolean getEstVertical(){
+		return estVertical;
+	}
 
 	public Coordonnee getFin() {
 		return fin;
+	}
+	
+	public int getLongueur() {
+		return longueur;
+	}
+	
+	public int getNbTouchees() {
+		return nbTouchees;
 	}
 
 	public boolean contient(Coordonnee c) { // проверка для горизонтального
