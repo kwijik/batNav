@@ -5,11 +5,11 @@ import java.util.Random;
 
 public class GrilleNavale {
 
-	private Navire[] navires; // массив кораблей
-	private int nbNavires; // количество кораблей ?? Какие корабли?
-	private int tailleGrille; // размер поля
-	private Coordonnee[] tirsRecus; // координаты клеток куда стреляли
-	private int nbTirsRecus; // количество выстрелов
+	private Navire[] navires; 
+	private int nbNavires; 
+	private int tailleGrille; 
+	private Coordonnee[] tirsRecus; 
+	private int nbTirsRecus; 
 
 	/*
 	 * Méthodes de classe
@@ -27,8 +27,8 @@ public class GrilleNavale {
 	 * boolean perdu()
 	 */
 
-	// taillesNavires {4,2,3} -> три корабля разного размера. Цифра - размер
-	// корабля
+	// taillesNavires {4,2,3}
+	
 	public GrilleNavale(int taille, int[] taillesNavires) {
 		// this(taille);
 		this.tailleGrille = taille;
@@ -135,8 +135,8 @@ public class GrilleNavale {
 				boolean randomBool = r.nextBoolean();
 				System.out.println("i = " + i + ", vertical: " + randomBool + ", number1: " + randomNum1 + ", number2: " + randomNum2);
 				if (randomBool) { // vertical or
-					// r.nextInt(tailleGrille - i) отступ от края
-					// r.nextInt(tailleGrille)+ 1 чтобы генерировал
+					// r.nextInt(tailleGrille - i) distance du bout
+					// r.nextInt(tailleGrille)+ 1 -> [1...10]
 					n = new Navire(new Coordonnee(randomNum1, randomNum2), i,
 							true);
 				} else {

@@ -21,17 +21,17 @@ public class Coordonnee {
 	}
 
 	public Coordonnee(String s) {
+		if (s.equals("")) {
+			throw new IllegalArgumentException("La chaine est vide."); 
+		}
 		colonne = (int)s.charAt(0) - (int)'A' + 1;
-		// (int)s.charAt(0) - получаем код символа
-		// код A  - всегда первый
-		// + 1 чтобы начать с единицы,иначе А будет = 0
+	
 		try {
 			ligne = Integer.parseInt(s.substring(1));
-		} catch(NumberFormatException e){
-			e.printStackTrace(); // выводит ошибку
-			ligne = 0; // на случай ошибки 0
+		} catch(NumberFormatException e){ // si c'est pas le nombre
+			e.printStackTrace(); // 
+			ligne = 0; // 
 		}
-		// parseInt может бросить исключение (если передано не число)
 	
 	}
 
@@ -75,9 +75,9 @@ public class Coordonnee {
 	}
 
 	public static void main(String[] args) {
-		Coordonnee c = new Coordonnee(12, 5);
-		System.out.println(c);
-		Coordonnee c2 = new Coordonnee("E13");
-		System.out.println(c.voisine(c2));
+		//Coordonnee c = new Coordonnee(12, 5);
+		//System.out.println(c);
+		Coordonnee c2 = new Coordonnee("");
+		System.out.println(c2.voisine(c2));
 	}
 }

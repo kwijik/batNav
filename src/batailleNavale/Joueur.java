@@ -26,7 +26,7 @@ public abstract class Joueur {
 	}
 
 	public void jouerAvec(Joueur j) {
-		
+		adversaire = j;
 	}
 
 	public void attaque(Coordonnee c) {
@@ -36,11 +36,26 @@ public abstract class Joueur {
 	}
 
 	public boolean defense(Coordonnee c) {
-		if(this.grille.recoitTir(c)){
-			if (!this.grille.perdu()){
-				
+		int etat;
+		boolean res;
+		if(grille.recoitTir(c)){
+			if (grille.estTouche(c) && !grille.perdu()){
+				etat = 1;
+				res= true;
+			} else {
+				etat = 3;
+				perdu();
+				adversaire.gagne();	
+				res = false;
 			}
+		} else {
+			etat = 3;
+			res = true;
 		}
+		
+		retourDefense(c, etat);
+		adversaire.retourAttaque(c, etat);		
+		return res;
 		
 	}
 

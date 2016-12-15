@@ -25,8 +25,7 @@ public class Navire {
 	 * boolean estTouche() 
 	 * c boolean estCoule() 
 	 */
-	// add voisine method
-	// boolean - estVertical, int - longueur -> ?
+	
 	
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
 		this.estVertical = estVertical;
@@ -68,12 +67,12 @@ public class Navire {
 		return nbTouchees;
 	}
 
-	public boolean contient(Coordonnee c) { // проверка для горизонтального
+	public boolean contient(Coordonnee c) { 
 		if (!estVertical) {
 			if (debut.getColonne() <= c.getColonne() && fin.getColonne() >= c.getColonne() && c.getLigne() == debut.getLigne()) {
 				return true;
 			}
-		} else { // проверка для вертикального
+		} else { 
 			if (debut.getLigne() <= c.getLigne() && fin.getLigne() >= c.getLigne() && c.getColonne() == debut.getColonne()) {
 				return true;
 			}
@@ -83,7 +82,6 @@ public class Navire {
 	}
 
 	public boolean touche(Navire n) {
-		// true если this прилегает к n. По диагонали не считается за соседство
 		ArrayList<Coordonnee> navire1, navire2;
 		navire1 = new ArrayList<Coordonnee>();
 		navire2 = new ArrayList<Coordonnee>();
@@ -127,7 +125,6 @@ public class Navire {
 		}
 		return false;
 	}
-// переписать проверить длину обеих кораблей
  
 	public boolean chevauche(Navire n) {
 		Navire n1, n2;
@@ -177,12 +174,10 @@ public class Navire {
 				
 		}
 		/*
-		// true если this и n занимают как минимум одну общую координату
-		ArrayList<Coordonnee> navire1, navire2; // все координаты кораблей
+		ArrayList<Coordonnee> navire1, navire2; // 
 		navire1 = new ArrayList<Coordonnee>(); 
 		navire2 = new ArrayList<Coordonnee>();
 		if (estVertical) {
-			// идем по колонкам
 			for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
 				Coordonnee c = new Coordonnee(debut.getLigne(), i);
 				// System.out.println(c);
@@ -197,7 +192,6 @@ public class Navire {
 		}
 		
 		if (n.estVertical) {
-			// идем по колонкам
 			for (int i = n.debut.getColonne(); i <= n.fin.getColonne(); i++) {
 				Coordonnee c = new Coordonnee(n.debut.getLigne(), i);
 				// System.out.println(c);
@@ -224,8 +218,52 @@ public class Navire {
 	}
 	
 	public boolean estVoisin(Navire n){
-		// true если this и n занимают как минимум одну общую координату
-				ArrayList<Coordonnee> navire1, navire2; // все координаты кораблей
+		Navire n1, n2;
+		if (estVertical && n.estVertical){
+			
+			if (this.debut.getLigne() <= n.debut.getLigne()){
+			n1 = this;
+			n2 = n;
+			} else {
+				n1 = n;
+				n2 = this;
+			}
+			if (n2.debut.getLigne() <= n1.fin.getLigne()){
+				return true;
+			} else {
+				return false;
+			}
+		} else if(!estVertical && !n.estVertical){
+			if (this.debut.getColonne()<= n.debut.getColonne()){
+				n1 = this;
+				n2 = n;
+			} else {
+				n1 = n;
+				n2 = this;
+			}
+			if (n2.debut.getColonne() <= n1.fin.getColonne()){
+				return true;
+			} else {
+				return false;
+			} 
+		} else {
+			if(n.estVertical){
+				n1 = n;
+				n2 = this;
+			} else {
+				n2 = n;
+				n1 = this;
+			}
+			if (n1.debut.getLigne() <= n2.debut.getLigne() && n1.fin.getLigne() >= n2.debut.getLigne() && 
+				n2.debut.getColonne() <= n1.debut.getColonne() && n2.fin.getColonne() >= n1.debut.getColonne() ){
+				return true;
+			} else {
+				return false;
+			}
+				
+		}
+		/*
+				ArrayList<Coordonnee> navire1, navire2; //
 				navire1 = new ArrayList<Coordonnee>(); 
 				navire2 = new ArrayList<Coordonnee>();
 				if (estVertical) {
@@ -267,14 +305,13 @@ public class Navire {
 					}
 				}
 				return false;
+				*/
 	}
 
 	public boolean recoitTir(Coordonnee c) {
-		// true если this содержит
 		ArrayList<Coordonnee> navire1;
 		navire1 = new ArrayList<Coordonnee>();
 		if (debut.getLigne() == fin.getLigne()) {
-			// идем по колонкам
 			for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
 				Coordonnee v = new Coordonnee(debut.getLigne(), i);
 				// System.out.println(c);
@@ -303,7 +340,6 @@ public class Navire {
 
 	
 	 public boolean estTouche(Coordonnee c) { 
-		 //true если this подбита на координате с 
 		 for (int i=0; i < nbTouchees; i++){
 			 if (c.equals(partiesTouchees[i])){
 				 return true;
@@ -312,7 +348,7 @@ public class Navire {
 		 return false;
 	}
 	  
-	  public boolean estTouche() { //true если у this хоть одна клетка подбита
+	  public boolean estTouche() {
 		  return nbTouchees != 0;
 	  }
 	  
@@ -330,6 +366,4 @@ public class Navire {
 	}
 	*/
 }
-// 18-30 - 20-30
-// 15-15 - 16-45 вторник
-//
+
