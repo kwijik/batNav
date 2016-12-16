@@ -196,10 +196,10 @@ public class GrilleNavale {
 
 	}
 
-	public boolean perdu() { 
+	public boolean perdu() { // проиграл
 		// this.perdu() -> true / false
 		for (Navire n : navires) {
-			if (!n.estCoule()) {
+			if (!n.estCoule()) { // не потоплен
 				return false;
 			}
 		}

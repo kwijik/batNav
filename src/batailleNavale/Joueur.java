@@ -27,6 +27,7 @@ public abstract class Joueur {
 
 	public void jouerAvec(Joueur j) {
 		adversaire = j;
+		debutAttaque();
 	}
 
 	public void attaque(Coordonnee c) {
@@ -38,22 +39,26 @@ public abstract class Joueur {
 	public boolean defense(Coordonnee c) {
 		int etat;
 		boolean res;
-		if(grille.recoitTir(c)){
+		if (grille.recoitTir(c)){
 			if (grille.estTouche(c) && !grille.perdu()){
-				etat = 1;
+				etat = TOUCHE;
 				res= true;
 			} else {
-				etat = 3;
-				perdu();
-				adversaire.gagne();	
-				res = false;
+				if (grille.perdu()){
+					res = false;
+				}
+				etat = COULE; // убили
+				res = true;
 			}
-		} else {
-			etat = 3;
+		} 
+		else {
+			etat = A_L_EAU; // в воду
+			perdu();
+			adversaire.gagne();	
 			res = true;
 		}
 		
-		retourDefense(c, etat);
+		this.retourDefense(c, etat);
 		adversaire.retourAttaque(c, etat);		
 		return res;
 		

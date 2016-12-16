@@ -141,4 +141,8 @@ public class GrilleGraphique extends JPanel implements ActionListener {
 			}
 		}
 	}
+	
+	public static void main(String[] args) {
+		
+	}
 }

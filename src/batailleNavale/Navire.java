@@ -15,10 +15,15 @@ public class Navire {
 	/*
 	 * Méthodes de classe
 	 * 
-	 * String toString() Coordonnee getDebut() Coordonnee getFin() boolean
-	 * contientt(Coordonnee c) boolean touche(Navire n) boolean
-	 * chevauchee(Navire n) boolean recoitTirr(Coordonnee c) boolean
-	 * estTouchee(Coordonnee c) boolean estTouche() c boolean estCoule()
+	 * String toString() 
+	 * Coordonnee getDebut() 
+	 * Coordonnee getFin() boolean
+	 * contientt(Coordonnee c)
+	 *  boolean touche(Navire n) 
+	 *  boolean chevauchee(Navire n) 
+	 *  boolean recoitTirr(Coordonnee c) boolean
+	 * estTouchee(Coordonnee c) 
+	 * boolean estTouche() c boolean estCoule()
 	 */
 
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
