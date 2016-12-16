@@ -21,9 +21,10 @@ public class Navire {
 	 * contientt(Coordonnee c)
 	 *  boolean touche(Navire n) 
 	 *  boolean chevauchee(Navire n) 
-	 *  boolean recoitTirr(Coordonnee c) boolean
-	 * estTouchee(Coordonnee c) 
-	 * boolean estTouche() c boolean estCoule()
+	 *  boolean recoitTirr(Coordonnee c) 
+	 *  boolean estTouchee(Coordonnee c) 
+	 * boolean estTouche() c 
+	 * boolean estCoule()
 	 */
 
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
@@ -346,7 +347,6 @@ public class Navire {
 
 	public boolean estCoule() {
 		return partiesTouchees.length == nbTouchees;
-
 	}
 	/*
 	 * public static void main(String[] args) { Navire n1 = new Navire(new

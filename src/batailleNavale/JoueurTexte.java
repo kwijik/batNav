@@ -24,6 +24,10 @@ public class JoueurTexte extends Joueur {
 	}
 
 	protected void retourAttaque(Coordonnee c, int etat) {
+		//System.out.println(super.getNom() + " retourAttaque");
+		
+		System.out.println(super.getNom() + " attacks " + c);
+		
 		if(etat ==  TOUCHE){
 			System.out.println("touche");
 			//debutAttaque();
@@ -36,6 +40,10 @@ public class JoueurTexte extends Joueur {
 	}
 
 	protected void retourDefense(Coordonnee c, int etat) {
+		//System.out.println(super.getNom() + " retourDefense" );
+
+		System.out.println(super.getNom() + " defends " + c);
+
 		if(etat ==  TOUCHE){
 			System.out.println("opponent touche");
 			
@@ -46,13 +54,30 @@ public class JoueurTexte extends Joueur {
 			System.out.println("opponent missed");
 			//debutAttaque();
 		}
+		System.out.println(super.getGrille());
+
 	}
 
 	public void debutAttaque() {
+		//System.out.println(super.getNom() + " debutAttaque");
+
+		//System.out.println(super.adversaire.getGrille());
 		System.out.print("enter new cell to attack please: ");
 		String cell = sc.nextLine();
 		Coordonnee c = new Coordonnee(cell.trim());
-		boolean def = defense(c);
+		attaque(c);
+	}
+	
+	public static void main(String[] args) {
+		int[] i = { 1};
+		GrilleNavale g1 = new GrilleNavale(10, i);
+		
+		Joueur joe = new JoueurTexte(g1, "Joe");
+		//System.out.println(g1);
+		GrilleNavale g2 = new GrilleNavale(10, i);
+		Joueur kate = new JoueurAuto(g2, "Kate");
+		//System.out.println(g2);
+	    joe.jouerAvec(kate);
 		
 	}
 }

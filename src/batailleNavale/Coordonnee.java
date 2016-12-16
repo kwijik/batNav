@@ -25,14 +25,14 @@ public class Coordonnee {
 			throw new IllegalArgumentException("La chaine est vide."); 
 		}
 		colonne = (int)s.charAt(0) - (int)'A' + 1;
-	
+		String x = s.substring(1);
 		try {
 			ligne = Integer.parseInt(s.substring(1));
 		} catch(NumberFormatException e){ // si c'est pas le nombre
 			e.printStackTrace(); // 
-			ligne = 0; // 
+			System.exit(1); 
 		}
-	
+		//System.out.println("'"+s+"'");
 	}
 
 	public String toString() {
@@ -77,7 +77,7 @@ public class Coordonnee {
 	public static void main(String[] args) {
 		//Coordonnee c = new Coordonnee(12, 5);
 		//System.out.println(c);
-		Coordonnee c2 = new Coordonnee("");
-		System.out.println(c2.voisine(c2));
+		Coordonnee c2 = new Coordonnee("С5");
+		System.out.println(c2);
 	}
 }

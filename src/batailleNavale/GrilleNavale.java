@@ -54,8 +54,18 @@ public class GrilleNavale {
 	 * 
 	 */
 
+	public int getTaille(){
+		return tailleGrille;
+	}
+	
 	public String toString() {
 		String cell = "";
+		int a = (int)'A';
+		for (int i = 0; i < tailleGrille; i++) {
+			cell += (char)a++;
+			cell += " ";
+		}
+		cell += '\n';
 		for (int y = 0; y < tailleGrille; y++) {
 			for (int x = 0; x < tailleGrille; x++) {
 				boolean estNavire = false;
@@ -88,22 +98,13 @@ public class GrilleNavale {
 					cell += "# ";
 				}
 			}
+			cell += Integer.toString(y+1);
 			cell += "\n";
 		}
 		return cell;
 	}
 
-	/*
-	 * A B C D E F G H I J 1 . . . . . . . . . . 2 . . . # # # . . . . 3 . . . .
-	 * . . # X # . 4 . . O . . . . O . . 5 . . . . . # . . . . 6 . . . O . # . .
-	 * . . 7 . # # . . # . . . . 8 . . . . . # . . . . 9 . . . . . . . O . . 10
-	 * . . . . . . . . . .
-	 * 
-	 * //точка - свободная клетка, в которую не стреляли; # - занятая кораблем,
-	 * O - свободная клетка получившая выстрел, X - подбитая часть корабля
-	 * 
-	 * }
-	 */
+	
 	public boolean ajouteNavire(Navire n) {
 		if (nbNavires == navires.length) {
 			return false;
@@ -123,7 +124,6 @@ public class GrilleNavale {
 	}
 
 	public void placementAuto(int[] taillesNavires) {
-		// автоматически и случайно расставляет корабли
 		Random r = new Random();
 		
 		for (int i : taillesNavires) {
@@ -133,7 +133,7 @@ public class GrilleNavale {
 				int randomNum1 = r.nextInt(tailleGrille - i + 1) + 1;
 				int randomNum2 = r.nextInt(tailleGrille) + 1;
 				boolean randomBool = r.nextBoolean();
-				System.out.println("i = " + i + ", vertical: " + randomBool + ", number1: " + randomNum1 + ", number2: " + randomNum2);
+				//System.out.println("i = " + i + ", vertical: " + randomBool + ", number1: " + randomNum1 + ", number2: " + randomNum2);
 				if (randomBool) { // vertical or
 					// r.nextInt(tailleGrille - i) distance du bout
 					// r.nextInt(tailleGrille)+ 1 -> [1...10]
@@ -173,27 +173,38 @@ public class GrilleNavale {
 	}
 
 	public boolean recoitTir(Coordonnee c) {
-		return ajouteDansTirsRecus(c);
+		if (ajouteDansTirsRecus(c)){
+			for (int i = 0; i < nbNavires; i++) {
+	              if ((navires[i].recoitTir(c))) {
+	                      return true;
+	              }
+			}
+		}
+		return false;
 	}
 
-	public boolean estTouche(Coordonnee c) {
-		return estDansTirsRecus(c);
+	public boolean estTouche(Coordonnee c) {  
+		for (int i = 0; i < nbNavires; i++) {
+              if ((navires[i].estTouche(c))) {
+                      return true;
+              }
+		}
+		return false;
 	}
 
 	public boolean estALEau(Coordonnee c) {
-		return !recoitTir(c);
+		return !estTouche(c);
 	}
 
 	public boolean estCoule(Coordonnee c) { 
 		for (Navire n : navires) {
 			if (n.contient(c)) { 
-				if (n.getNbTouchees() == n.getLongueur()) {
+				if (n.estCoule()) {
 					return true;
 				}
 			}
 		}
 		return false;
-
 	}
 
 	public boolean perdu() { // проиграл

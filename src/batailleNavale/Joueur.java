@@ -4,7 +4,7 @@ public abstract class Joueur {
 	public final static int TOUCHE = 1;
 	public final static int COULE = 2;
 	public final static int A_L_EAU = 3;
-	private Joueur adversaire;
+	protected Joueur adversaire;
 	private GrilleNavale grille;
 	private String nom;
 
@@ -27,40 +27,45 @@ public abstract class Joueur {
 
 	public void jouerAvec(Joueur j) {
 		adversaire = j;
+		adversaire.adversaire = this;
 		debutAttaque();
+		
 	}
 
 	public void attaque(Coordonnee c) {
+	//	System.out.println(this.getNom() + " attaque");
+
 		if (adversaire.defense(c)) {
 			adversaire.debutAttaque();
 		}
 	}
 
 	public boolean defense(Coordonnee c) {
+	//	System.out.println(this.getNom() + " defense");
 		int etat;
-		boolean res;
+		
 		if (grille.recoitTir(c)){
-			if (grille.estTouche(c) && !grille.perdu()){
-				etat = TOUCHE;
-				res= true;
+			if (grille.perdu()){
+				perdu();
+				adversaire.gagne();
+				return false;
+			}
+			if (grille.estCoule(c)){ // не проиграли пока
+				etat = COULE;
 			} else {
-				if (grille.perdu()){
-					res = false;
-				}
-				etat = COULE; // убили
-				res = true;
+				
+				etat = TOUCHE; // подбили
 			}
 		} 
 		else {
 			etat = A_L_EAU; // в воду
-			perdu();
-			adversaire.gagne();	
-			res = true;
+			//perdu();
+			//adversaire.gagne();	
 		}
 		
 		this.retourDefense(c, etat);
 		adversaire.retourAttaque(c, etat);		
-		return res;
+		return true;
 		
 	}
 

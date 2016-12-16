@@ -47,28 +47,13 @@ public class Window extends JFrame {
 		splitPane.setResizeWeight(0.5);
 		contentPane.add(splitPane);
 		
-		JPanel panel = new JPanel();
+		JPanel panel = new GrilleGraphique();
 		splitPane.setLeftComponent(panel);
-		panel.setLayout(new GridLayout(10, 10));
-		
-		for (int i = 0; i< 10; i++){
-			for (int j = 0; j < 10; j++) {
-				JButton btnNewButton = new JButton();
-				panel.add(btnNewButton);
-			}
-		}
 		
 		
-		JPanel panel_1 = new JPanel();
+		
+		JPanel panel_1 = new GrilleGraphique();
 		splitPane.setRightComponent(panel_1);
-		panel_1.setLayout(new GridLayout(10, 10));
-		
-		for (int i = 0; i< 10; i++){
-			for (int j = 0; j < 10; j++) {
-				JButton btnNewButton = new JButton();
-				panel_1.add(btnNewButton);
-			}
-		}
 		
 	}
 
