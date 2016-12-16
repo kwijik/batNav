@@ -20,11 +20,15 @@ public class JoueurTexte extends Joueur {
 	}
 
 	protected void retourAttaque(Coordonnee c, int etat) {
+		
 	}
 
 	protected void retourDefense(Coordonnee c, int etat) {
+		
 	}
 
 	public void debutAttaque() {
+		
 	}
 }
+

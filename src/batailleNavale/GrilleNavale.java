@@ -207,7 +207,7 @@ public class GrilleNavale {
 	}
 
 	public static void main(String[] args) {
-		int[] i = { 1, 2,  3, 1 , 4};
+		int[] i = { 1, 2,  3, 1 , 4, 2, 3, 4, 3};
 		GrilleNavale gn = new GrilleNavale(10, i);
 
 		System.out.println(gn);
